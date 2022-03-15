@@ -13,11 +13,11 @@ const cartaButterfree = new Cartas("Butterfree");
 cartaButterfree.defineStatus(new Status(3, 3, 6, 5, 5));
 
 var cartas = [];
-cartas.push(cartaBulbasaur.classe);
-cartas.push(cartaCharmander.classe);
-cartas.push(cartaVulpix.classe);
-cartas.push(cartaSquirtle.classe);
-cartas.push(cartaButterfree.classe);
+cartas.push(cartaBulbasaur);
+cartas.push(cartaCharmander);
+cartas.push(cartaVulpix);
+cartas.push(cartaSquirtle);
+cartas.push(cartaButterfree);
 
 var cartaMaquina;
 var cartaJogador;
@@ -32,13 +32,21 @@ function sortearCartas() {
 
   cartaJogador = cartas[numeroCartaJogador];
   console.log(cartaJogador);
-  //document.getElementById("btnSortear").disable = "true"
-  //document.getElementById("btnJogar").disable = "false"
+  document.getElementById("btnSortear").disable = "true";
+  document.getElementById("btnJogar").disable = "false";
+
+  exibirOpcoes() 
 }
 
 function exibirOpcoes() {
-    //var opcoes = document.getElementById("opcoes");
-  for (var status in cartaJogador) console.log(status);
+  var opcoes = document.getElementById("opcoes");
+  var opcoesTexto = "";
+  for (var status in cartaJogador.classe) {
+    opcoesTexto +=
+    "<input type='radio' name='status' value='" +
+    status +
+    "'>" +
+    status;
+  }
+  opcoes.innerHTML = opcoesTexto;
 }
-
-sortearCartas()
